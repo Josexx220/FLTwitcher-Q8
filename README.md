@@ -10,9 +10,9 @@ Sin cuenta, sin navegador: muestra los directos, busca canales y categorías, y 
 
 ### Ventana principal
 
-![Ventana principal con indicadores violeta](img/principal.png)
+![Ventana principal en FLinux oficial](img/principal.png)
 
-Los círculos violeta fluorescente indican los canales en vivo; los rojos, los apagados.
+FLTwitcher 0.1 corriendo en el FLinux oficial de Nicolás Longardi. Los círculos lila neón (`#A970FF`) indican los canales en vivo.
 
 ### Búsqueda
 
