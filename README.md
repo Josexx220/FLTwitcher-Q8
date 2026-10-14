@@ -8,9 +8,29 @@ Sin cuenta, sin navegador: muestra los directos, busca canales y categorías, y 
 
 ## Capturas
 
-![Búsqueda de canales con resultados en vivo](img/busqueda.png)
+### Ventana principal
 
-![Canal seleccionado para reproducir](img/reproduciendo.png)
+![Ventana principal con indicadores violeta](img/principal.png)
+
+Los círculos violeta fluorescente indican los canales en vivo; los rojos, los apagados.
+
+### Búsqueda
+
+![Ejemplo de búsqueda](img/busqueda.png)
+
+La búsqueda abarca toda la plataforma por canal y por categoría. Los resultados en vivo aparecen arriba ordenados por espectadores; los apagados, debajo.
+
+### Favoritos
+
+![Sección de favoritos](img/favoritos.png)
+
+El pulgar 👍 blanco marca un canal como favorito; al activarlo se vuelve violeta fluorescente. Los favoritos se guardan en `~/.fltwitcherrc`.
+
+### Ayuda
+
+![Ventana de ayuda](img/ayuda.png)
+
+El botón de información (i) abre la ventana de Ayuda con pestañas: qué es FLTwitcher, cómo usarlo y créditos.
 
 ## Qué es
 
