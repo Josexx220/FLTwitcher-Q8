@@ -1,14 +1,10 @@
 # FLTwitcher
 
-<img src="img/icono.png" width="128" alt="Icono de FLTwitcher">
-
 Cliente de Twitch para **FLinux (Tiny Core Linux)**, escrito desde cero en **C++ con FLTK**.
 
 Sin cuenta, sin navegador: muestra los directos, busca canales y categorías, y reproduce con **mplayer**.
 
-## Capturas
-
-### Ventana principal
+## Ventana principal
 
 ![Ventana principal](img/principal.png)
 
