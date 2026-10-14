@@ -6,39 +6,39 @@ Sin cuenta, sin navegador: muestra los directos, busca canales y categorías, y 
 
 ## Ventana principal
 
-![Ventana principal](img/principal.png)
+!Ventana principal
 
 ### Favoritos
 
-![Sección de favoritos](img/favoritos.png)
+!Sección de favoritos
 
 El pulgar 👍 marca un canal como favorito. Los favoritos se guardan en `~/.fltwitcherrc`.
 
 ### Reproduciendo
 
-![Canal seleccionado para reproducir](img/reproduciendo.png)
+!Canal seleccionado para reproducir
 
 ## Ventana principal
 
-![Ventana principal en FLinux oficial](img/principal.png)
+!Ventana principal en FLinux oficial
 
 FLTwitcher 0.1 corriendo en el FLinux oficial de Nicolás Longardi. Los círculos lila neón (`#A970FF`) indican los canales en vivo.
 
 ### Búsqueda
 
-![Ejemplo de búsqueda](img/busqueda.png)
+!Ejemplo de búsqueda
 
 La búsqueda abarca toda la plataforma por canal y por categoría. Los resultados en vivo aparecen arriba ordenados por espectadores; los apagados, debajo.
 
 ### Favoritos
 
-![Sección de favoritos](img/favoritos.png)
+!Sección de favoritos
 
 El pulgar 👍 blanco marca un canal como favorito; al activarlo se vuelve violeta fluorescente. Los favoritos se guardan en `~/.fltwitcherrc`.
 
 ### Ayuda
 
-![Ventana de ayuda](img/ayuda.png)
+!Ventana de ayuda
 
 El botón de información (i) abre la ventana de Ayuda con pestañas: qué es FLTwitcher, cómo usarlo y créditos.
 
@@ -48,7 +48,7 @@ FLTwitcher es un cliente ligero de Twitch pensado para equipos de 32 y 64 bits c
 
 ## Cómo funciona
 
-1. **API GraphQL sin cuenta**: consulta `https://gql.twitch.tv/gql` con el Client-ID público que la web de Twitch reparte en su JavaScript. Sin OAuth, sin registro.
+1. **API GraphQL sin cuenta**: consulta ` con el Client-ID público que la web de Twitch reparte en su JavaScript. Sin OAuth, sin registro.
 2. **Lista de directos**: pide los 20 directos con más espectadores (`streams(first:20)`).
 3. **Búsqueda**: por canal exacto (`user(login)`) o por categoría/juego (`game(name)`); las sugerencias al escribir solo muestran canales en vivo.
 4. **Token de reproducción**: solicita el `streamPlaybackAccessToken` para el canal elegido.
@@ -109,4 +109,4 @@ Puedes redistribuirlo y modificarlo bajo los términos de la GPL-3.0 publicada p
 
 ## Autor
 
-- **Juan Carlos** ([jcarlosrf26](https://github.com/jcarlosrf26)) — especificación, diseño y pruebas en Dell Inspiron 1545.
+- **Juan Carlos** (jcarlosrf26) — especificación, diseño y pruebas en Dell Inspiron 1545.
