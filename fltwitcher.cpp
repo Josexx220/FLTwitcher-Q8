@@ -1,31 +1,31 @@
 // FLTwitcher 0.1 - Cliente de Twitch estilo FreeTube para FLinux-JC /
-// FLinux-JC64. C++ + FLTK 1.3. Via anonima (sin cuenta ni claves):
+// FLinux-JC64. C++ + FLTK 1.3. Via anónima (sin cuenta ni claves):
 // habla con la misma GraphQL que usa la web de twitch.tv para un
-// visitante, con el Client-Id publico que la web reparte en su JS
-// (verificado en vivo: lista, busqueda y token salen sin login).
+// visitante, con el Client-Id público que la web reparte en su JS
+// (verificado en vivo: lista, búsqueda y token salen sin login).
 //
-//   Directos:    streams(first:20) - los 20 con mas espectadores.
+//   Directos:    streams(first:20) - los 20 con más espectadores.
 //   Canal:       user(login) -> stream (null = no esta en directo;
 //                user null = el canal no existe).
 //   Sugerencias: searchFor(userQuery) - el buscador de la web; solo
 //                valen las candidatas con stream (en vivo). El
 //                veredicto lo da user(login) al dar Enter/REPRODUCIR.
-//   Categoria:   game(name) -> streams del juego (respaldo cuando
+//   Categoría:   game(name) -> streams del juego (respaldo cuando
 //                el texto no es un canal).
 //   Reproduccion: streamPlaybackAccessToken -> master HLS de usher
 //                (usher.ttvnw.net/api/channel/hls/{login}.m3u8)
 //                -> variante por altura (160/240/360/480/720,
 //                defecto 360; exacta, si no la inmediata inferior,
-//                si no la mas baja) -> ffmpeg demuxa el HLS y
-//                entrega MPEG-TS por tuberia a mplayer (el mplayer
+//                si no la más baja) -> ffmpeg demuxa el HLS y
+//                entrega MPEG-TS por tubería a mplayer (el mplayer
 //                de Tiny Core no abre HLS solo; la receta de
 //                FLKicker). Si el master no baja tras los
-//                reintentos, va tal cual a ffmpeg («via master»).
+//                reintentos, va tal cual a ffmpeg («vía master»).
 //
 // Red reforzada (heredada de FLKicker): timeouts largos (conex.
 // 15 s, total 60 s), 2 reintentos con 2 s de pausa en errores
 // transitorios, solo IPv4 y NOSIGNAL (obligado con hilos). Los
-// errores nombran el host que fallo y el codigo curl exacto,
+// errores nombran el host que fallo y el código curl exacto,
 // para diagnosticar con una foto.
 //
 // Color distintivo (peticion de Juanca): lila/morado fluorescente
@@ -198,9 +198,9 @@ static Fl_Color tw_purple() { return fl_rgb_color(145, 70, 255); }
 static Fl_Color tw_lilac() { return fl_rgb_color(169, 112, 255); }
 // lila neon del icono (acento)
 // Punto «en vivo» de cada fila: el mismo lila neon distintivo.
-// En oscuro brilla el fluorescente; en claro manda el nucleo, mas
+// En oscuro brilla el fluorescente; en claro manda el nucleo, más
 // rico sobre blanco; sobre la fila seleccionada (fondo morado en
-// ambos temas) va el mas claro de la familia para que se lea.
+// ambos temas) va el más claro de la familia para que se lea.
 static Fl_Color live_dot_color(bool sel) {
     if (sel) return fl_rgb_color(191, 148, 255);  // #BF94FF
     return g_dark ? tw_lilac() : tw_purple();
@@ -229,7 +229,7 @@ static std::string host_of(const std::string &url) {
 }
 
 // Errores de transporte que vale la pena reintentar (DNS que parpadea,
-// conexion rechazada, tiempo agotado, corte a mitad): los que mataban
+// conexión rechazada, tiempo agotado, corte a mitad): los que mataban
 // el REPRODUCIR en la Dell con un curl 28 solitario.
 static bool curl_transitorio(CURLcode cc) {
     return cc == CURLE_COULDNT_RESOLVE_HOST || cc == CURLE_COULDNT_CONNECT ||
@@ -351,7 +351,7 @@ static std::string net_error(const HttpRes &r, const char *que) {
     char buf[384];
     std::string host = host_of(r.url);
     if (r.curl_err)
-        // Diagnostico con una foto: host que fallo y codigo curl exacto.
+        // Diagnostico con una foto: host que fallo y código curl exacto.
         snprintf(buf, sizeof(buf),
                  "Sin conexion con Twitch (%s): fallo %s "
                  "(curl %d, %d intentos).",
@@ -519,7 +519,7 @@ static void parse_variants(const std::string &master, const std::string &base,
     }
 }
 
-// exacta; si no, inmediata inferior; si tampoco, la mas baja
+// exacta; si no, inmediata inferior; si tampoco, la más baja
 static const Variant *choose_variant(const std::vector<Variant> &v, int want) {
     const Variant *exact = nullptr, *lower = nullptr, *lowest = nullptr;
     for (size_t i = 0; i < v.size(); i++) {
@@ -684,7 +684,7 @@ static void *job_thread(void *vp) {
             if (root) json_object_put(root);
         }
     } else if (arg->kind == JOB_CATEGORY) {
-        // Categoria = juego de Twitch: game(name) trae sus directos.
+        // Categoría = juego de Twitch: game(name) trae sus directos.
         std::string body =
             "{\"query\":\"query($n:String!){game(name:$n){"
             "displayName streams(first:20){edges{node{title "
@@ -707,7 +707,7 @@ static void *job_thread(void *vp) {
                     rows_de_edges(
                         js_obj(js_obj(g, "streams"), "edges"), "node",
                         res->rows);
-                    // El nodo no trae game: la categoria es el
+                    // El nodo no trae game: la categoría es el
                     // juego buscado (la columna no queda vacia).
                     std::string gn = js_str(g, "displayName");
                     if (gn.empty()) gn = arg->query;
@@ -852,7 +852,7 @@ static void player_stop(bool silent) {
 }
 
 static void watch_cb(void *) {
-    // Debounce de sugerencias: ~0,5 s despues del ultimo tecleo (este
+    // Debounce de sugerencias: ~0,5 s despues del último tecleo (este
     // watch pasa cada 0,5 s) y sin solapar dos JOB_SUGGEST.
     if (!g_sugg_queued.empty() && g_sugg_inflight.empty() &&
         g_sugg_queued != g_sugg_for && now_s() - g_last_key_t >= 0.5) {
@@ -1173,7 +1173,7 @@ static void table_cb(Fl_Widget *, void *) {
 }
 
 // ------------------------------------------------------- filtro al teclear
-// Al escribir en «Canal o categoria» la tabla se filtra AL MOMENTO y en
+// Al escribir en «Canal o categoría» la tabla se filtra AL MOMENTO y en
 // local (sin red) sobre los directos ya cargados: coinciden canal o
 // titulo; primero los que empiezan por lo escrito y luego los que solo
 // lo contienen, conservando el orden por espectadores (el de g_rows)
@@ -1275,7 +1275,7 @@ public:
 static void input_changed_cb(Fl_Widget *, void *) {
     apply_filter(true);
     // Debounce de sugerencias EN VIVO: watch_cb dispara JOB_SUGGEST a
-    // los ~0,5 s del ultimo tecleo (>= 2 caracteres). Con menos, o al
+    // los ~0,5 s del último tecleo (>= 2 caracteres). Con menos, o al
     // borrar, las sugerencias se retiran.
     std::string q = lower_of(trim(g_input->value()));
     if (q.size() >= 2) {
@@ -1371,7 +1371,7 @@ static void awake_cb(void *p) {
             set_status(std::string("\xc2\xab") + res->note +
                        "\xc2\xbb no esta en directo ahora.");
         } else if (res->kind == JOB_CHANNEL && res->notfound) {
-            // no existe como canal: intentar como categoria (juego)
+            // no existe como canal: intentar como categoría (juego)
             std::string q = trim(g_input->value());
             delete res;
             run_job(JOB_CATEGORY, q, "Buscando como categoria...");
