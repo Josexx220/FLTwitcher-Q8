@@ -818,7 +818,7 @@ static void player_launch(const std::string &url, const std::string &label,
              "-i '%s' -c copy -f mpegts pipe:1 | "
              "exec mplayer -demuxer lavf "
              "-lavfdopts format=mpegts:probesize=200000 "
-             "-vo xv,x11 -ao alsa,pulse,null -cache 8192 "
+             "-zoom -vo x11 -ao alsa,pulse,null -cache 8192 "
              "-cache-min 20 -framedrop -",
              FLKICK_UA, uq.c_str());
     pid_t pid = fork();
