@@ -6,63 +6,9 @@ Cliente de Twitch para **FLinux (Tiny Core Linux)**, escrito desde cero en **C++
 
 Sin cuenta, sin navegador: muestra los directos, busca canales y categorías, y reproduce con **mplayer**.
 
-## Ventana principal
-
-!Ventana principal
-
-### Favoritos
-
-!Sección de favoritos
-
-El pulgar 👍 marca un canal como favorito. Los favoritos se guardan en `~/.fltwitcherrc`.
-
-### Reproduciendo
-
-!Canal seleccionado para reproducir
-
-## Ventana principal
-
-!Ventana principal en FLinux oficial
-
-FLTwitcher 0.1 corriendo en el FLinux oficial de Nicolás Longardi. Los círculos lila neón (`#A970FF`) indican los canales en vivo.
-
-### Búsqueda
-
-!Ejemplo de búsqueda
-
-La búsqueda abarca toda la plataforma por canal y por categoría. Los resultados en vivo aparecen arriba ordenados por espectadores; los apagados, debajo.
-
-### Favoritos
-
-!Sección de favoritos
-
-El pulgar 👍 blanco marca un canal como favorito; al activarlo se vuelve violeta fluorescente. Los favoritos se guardan en `~/.fltwitcherrc`.
-
-### Ayuda
-
-!Ventana de ayuda
-
-El botón de información (i) abre la ventana de Ayuda con pestañas: qué es FLTwitcher, cómo usarlo y créditos.
-
-## Capturas
-
-### Ventana principal
+## Qué es
 
 ![Ventana principal](img/principal.png)
-
-### Información
-
-![Ventana de información](img/info.png)
-
-### Búsqueda
-
-![Ejemplo de búsqueda](img/busqueda.png)
-
-### Modo oscuro
-
-![Modo oscuro](img/modo-oscuro.png)
-
-## Qué es
 
 FLTwitcher es un cliente ligero de Twitch pensado para equipos de 32 y 64 bits con pocos recursos, como la Dell Inspiron 1545 con FLinux-JC. No necesita cuenta de Twitch ni navegador: se conecta a la API web pública de Twitch, la misma que usa twitch.tv para cualquier visitante, y reproduce los directos a través de un tubo `ffmpeg → mplayer`.
 
@@ -78,6 +24,8 @@ FLTwitcher es un cliente ligero de Twitch pensado para equipos de 32 y 64 bits c
 
 La red corre en hilos `pthread` con reintentos automáticos; la interfaz se actualiza con `Fl::awake`.
 
+![Ejemplo de búsqueda](img/busqueda.png)
+
 ## Cómo está hecho
 
 - **Lenguaje**: C++ con **FLTK 1.3** (interfaz ligera, sin dependencias pesadas).
@@ -87,6 +35,8 @@ La red corre en hilos `pthread` con reintentos automáticos; la interfaz se actu
 - **JSON**: `libjson-c` para las respuestas de la API.
 - **Favoritos**: botón 👍 por canal, persistidos en `~/.fltwitcherrc`.
 - **Temas**: modo oscuro y modo claro conmutables.
+
+![Ventana de información](img/info.png)
 
 ## Instalación
 
@@ -111,6 +61,8 @@ tce-load -i fltwitcher32.tcz
 El script `tce.installed` agrega el icono al **wbar** automáticamente. Para cargarlo en cada arranque, añádelo a `tce/optional/onboot.lst`.
 
 Dependencias: `fltk-1.3.tcz`, `curl.tcz`, `json-c.tcz`, `mplayer-cli.tcz`, `ffmpeg4.tcz`.
+
+![Modo oscuro](img/modo-oscuro.png)
 
 ## Créditos y agradecimientos
 
