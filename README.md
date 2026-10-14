@@ -10,6 +10,20 @@ Sin cuenta, sin navegador: muestra los directos, busca canales y categorías, y 
 
 ### Ventana principal
 
+![Ventana principal](img/principal.png)
+
+### Favoritos
+
+![Sección de favoritos](img/favoritos.png)
+
+El pulgar 👍 marca un canal como favorito. Los favoritos se guardan en `~/.fltwitcherrc`.
+
+### Reproduciendo
+
+![Canal seleccionado para reproducir](img/reproduciendo.png)
+
+## Ventana principal
+
 ![Ventana principal en FLinux oficial](img/principal.png)
 
 FLTwitcher 0.1 corriendo en el FLinux oficial de Nicolás Longardi. Los círculos lila neón (`#A970FF`) indican los canales en vivo.
