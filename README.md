@@ -1,3 +1,5 @@
+<img src="img/icono.png" width="64" alt="FLTwitcher">
+
 # FLTwitcher
 
 Cliente de Twitch para **FLinux (Tiny Core Linux)**, escrito desde cero en **C++ con FLTK**.
@@ -41,6 +43,24 @@ El pulgar 👍 blanco marca un canal como favorito; al activarlo se vuelve viole
 !Ventana de ayuda
 
 El botón de información (i) abre la ventana de Ayuda con pestañas: qué es FLTwitcher, cómo usarlo y créditos.
+
+## Capturas
+
+### Ventana principal
+
+![Ventana principal](img/principal.png)
+
+### Información
+
+![Ventana de información](img/info.png)
+
+### Búsqueda
+
+![Ejemplo de búsqueda](img/busqueda.png)
+
+### Modo oscuro
+
+![Modo oscuro](img/modo-oscuro.png)
 
 ## Qué es
 
